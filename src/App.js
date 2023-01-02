@@ -25,7 +25,7 @@ function App() {
       reminder: true,
     },
   ])
-  const [showAddTask,setShowAddTask] = useState(true);
+  const [showAddTask,setShowAddTask] = useState(false);
 
   //Add Task
   const addTask = (task) => { 
@@ -44,11 +44,10 @@ function App() {
     setTasks(tasks.map( (task) =>  task.id === id ? {...task, reminder: !task.reminder} :task  ))
   }
 
-//  const addTask = () => { setShowAddTask(!showAddTask)  }
 
   return (
     <div className='container'>
-    <Header title='Task Tracker App' onAdd={ () => { setShowAddTask(!showAddTask)  } }/>
+    <Header title='Task Tracker App' onAdd={ () => { setShowAddTask(!showAddTask) }} showAddTask={showAddTask} />
     {showAddTask  && <AddTask onAdd={addTask}/>}
     { tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />: 'No task present'}
     
