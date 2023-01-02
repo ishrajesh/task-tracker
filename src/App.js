@@ -25,7 +25,12 @@ function App() {
       reminder: true,
     },
   ])
-  const [showAddTask,setShowAddTask] = useState(false);
+  const [showAddTask,setShowAddTask] = useState(true);
+
+  //Add Task
+  const addTask = (task) => { 
+    console.log(task) 
+  }
 
   //Delete Task
   const deleteTask = (id) => { 
@@ -42,7 +47,7 @@ function App() {
   return (
     <div className='container'>
     <Header title='Task Tracker App' onAdd={ () => { setShowAddTask(!showAddTask)  } }/>
-    {showAddTask  && <AddTask />}
+    {showAddTask  && <AddTask onAddTask = {addTask}/>}
     { tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />: 'No task present'}
     
     </div>

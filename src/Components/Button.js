@@ -8,7 +8,7 @@ const Button = ({text,color,onClick}) => {
         style={{
             backgroundColor: color,
         }}
-        onclick={onClick}
+        onClick={onClick}
     >
         {text}
     </button>
